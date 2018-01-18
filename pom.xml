@@ -3,7 +3,7 @@
   <modelVersion>4.0.0</modelVersion>
   <groupId>com.wisea.cloud.common</groupId>
   <artifactId>DataCheck</artifactId>
-  <version>0.0.1-SNAPSHOT</version>
+  <version>0.0.1</version>
   <name>DataCheck</name>
   <description>DataCheck is a data validation framework base on Spring.</description>
 
@@ -55,4 +55,16 @@
       <artifactId>gson</artifactId>
     </dependency>
   </dependencies>
+
+  <developers>
+    <developer>
+      <name>XuDL</name>
+      <id>XuDL</id>
+      <email>xudalin33@126.com</email>
+      <organization>Wisea, Inc.</organization>
+      <roles>
+        <role>Java Developer</role>
+      </roles>
+    </developer>
+  </developers>
 </project>

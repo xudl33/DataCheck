@@ -19,12 +19,12 @@ import org.springframework.expression.EvaluationContext;
 import org.springframework.expression.ExpressionParser;
 import org.springframework.expression.spel.standard.SpelExpressionParser;
 import org.springframework.expression.spel.support.StandardEvaluationContext;
+import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 import com.wisea.cloud.common.datacheck.annotation.Check;
 import com.wisea.cloud.common.datacheck.entity.DataCheck;
 import com.wisea.cloud.common.datacheck.entity.DataCheckModel;
-import com.wisea.cloud.common.util.ConverterUtil;
 
 /**
  * 数据校验工具类
@@ -33,6 +33,7 @@ import com.wisea.cloud.common.util.ConverterUtil;
  *
  *         2018年1月18日 下午3:40:13
  */
+@Component
 public class DataCheckUtil implements ApplicationContextAware {
     /**
      * 日志对象
@@ -564,7 +565,7 @@ public class DataCheckUtil implements ApplicationContextAware {
                             errorMsg.add(MessageFormat.format(req.lengthMsg(), feildName, "最小", mixRange[0]));
                         }
                         // 最大混合长度
-                        if (ConverterUtil.toString(val, "").length() > lenRange[1]) {
+                        if (ConverterUtil.getMixLength(ConverterUtil.toString(val, "")) > mixRange[1]) {
                             errorMsg.add(MessageFormat.format(req.lengthMsg(), feildName, "最大", mixRange[1]));
                         }
                     }

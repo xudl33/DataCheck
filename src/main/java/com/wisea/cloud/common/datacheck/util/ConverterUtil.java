@@ -1,4 +1,4 @@
-package com.wisea.cloud.common.util;
+package com.wisea.cloud.common.datacheck.util;
 
 import java.beans.IntrospectionException;
 import java.io.UnsupportedEncodingException;

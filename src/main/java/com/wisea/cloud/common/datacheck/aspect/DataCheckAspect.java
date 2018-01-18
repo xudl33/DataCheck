@@ -18,8 +18,9 @@ import org.springframework.stereotype.Component;
 
 import com.google.common.collect.Lists;
 import com.wisea.cloud.common.datacheck.annotation.Check;
+import com.wisea.cloud.common.datacheck.exception.DataCheckException;
+import com.wisea.cloud.common.datacheck.util.ConverterUtil;
 import com.wisea.cloud.common.datacheck.util.DataCheckUtil;
-import com.wisea.cloud.common.util.ConverterUtil;
 
 /**
  * DataCheck数据校验切片
@@ -74,7 +75,7 @@ public class DataCheckAspect {
         if (ConverterUtil.isNotEmpty(msgList)) {
             String msg = msgList.stream().collect(Collectors.joining(";"));
             logger.debug("DataCheck invalidate:" + msg);
-            throw new RuntimeException(msg);
+            throw new DataCheckException(msg);
         }
     }
 }
