@@ -142,6 +142,7 @@ public class UseInClassDemo {
 ```
 
 ## Spring Boot方式
+1. 
 1. 在PO中声明`@Check`注解
 ``` java
 public class RegisterUserPo {
