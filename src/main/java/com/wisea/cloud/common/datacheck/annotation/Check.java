@@ -30,6 +30,9 @@ public @interface Check {
 
     /** 级联校验 若被校验的对象是一个bean, 默认不会校验对应的属性,若cascade=true,这会对其进行校验 */
     public boolean cascade() default false;
+    
+    /** 空值跳过校验 若被校验值只有非空时再进行校验，则可以使用nullSkip=true */
+    public boolean nullSkip() default false;
 
     /** 长度限制(test包含minLength或maxLength生效) */
     public int length() default -1;

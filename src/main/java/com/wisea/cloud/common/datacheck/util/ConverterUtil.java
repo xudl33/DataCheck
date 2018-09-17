@@ -18,6 +18,7 @@ import java.time.Instant;
 import java.util.ArrayList;
 import java.util.Arrays;
 import java.util.Calendar;
+import java.util.Collection;
 import java.util.Date;
 import java.util.GregorianCalendar;
 import java.util.HashMap;
@@ -1140,6 +1141,15 @@ public final class ConverterUtil {
     public static boolean isEmpty(Object str) {
         boolean flag = true;
         if (str != null && !str.equals("")) {
+            if (str instanceof Object[]) {
+                return ((Object[]) str).length <= 0;
+            }
+            if (str instanceof Collection<?>) {
+                return ((Collection<?>) str).size() <= 0;
+            }
+            if (str instanceof Map) {
+                return ((Map<?, ?>) str).size() <= 0;
+            }
             String newStr = str.toString();
             if (newStr == null || newStr == "" || "[]".equals(newStr) || "null".equals(newStr)) {
                 flag = true;
@@ -1161,16 +1171,38 @@ public final class ConverterUtil {
     public static boolean isNotEmpty(Object str) {
         return !isEmpty(str);
     }
-
+    
     /**
      * 判断对象数组是否都为空
      * 
      * @return
      */
     public static boolean isEmpty(Object... strs) {
+        if (strs == null || 0 == strs.length) {
+            return true;
+        }
         boolean result = true;
         for (Object obj : strs) {
             result = (result && isEmpty(obj));
+            if (!result) {
+                return result;
+            }
+        }
+        return result;
+    }
+
+    /**
+     * 判断对象数组是否有一个为空
+     * 
+     * @return
+     */
+    public static boolean isOrEmpty(Object... strs) {
+        boolean result = false;
+        for (Object obj : strs) {
+            result = (result || isEmpty(obj));
+            if (result) {
+                return result;
+            }
         }
         return result;
     }
@@ -1181,9 +1213,15 @@ public final class ConverterUtil {
      * @return
      */
     public static boolean isNotEmpty(Object... strs) {
+        if (strs == null || 0 == strs.length) {
+            return false;
+        }
         boolean result = true;
         for (Object obj : strs) {
             result = (result && isNotEmpty(obj));
+            if (!result) {
+                return result;
+            }
         }
         return result;
     }

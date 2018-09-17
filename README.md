@@ -142,7 +142,9 @@ public class UseInClassDemo {
 ```
 
 ## Spring Boot方式
-1. 
+在boot工程的`@SpringBootApplication`或`@Configuration`的class中加入`@EnableDataCheck`即可。
+
+## 使用Demo
 1. 在PO中声明`@Check`注解
 ``` java
 public class RegisterUserPo {
